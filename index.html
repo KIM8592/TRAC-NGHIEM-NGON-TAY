@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Trắc nghiệm tay không</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+</head>
+<body>
+
+<header>
+  <button onclick="showScreen('manage')">⚙️ Quản lý câu hỏi</button>
+  <button onclick="showScreen('quiz')">❓ Trắc nghiệm</button>
+</header>
+
+<!-- Quản lý -->
+<section id="manage" class="active">
+Trần Trọng Kim. ĐT: 096.45678.06
+  <h2>📋 Tạo câu hỏi</h2>
+  <input id="qText" placeholder="Nhập câu hỏi">
+  <input type="file" id="qImage" accept="image/*">
+  <div id="optionsContainer">
+    <input class="opt" placeholder="Đáp án 1">
+    <input class="opt" placeholder="Đáp án 2">
+    <input class="opt" placeholder="Đáp án 3">
+    <input class="opt" placeholder="Đáp án 4">
+  </div>
+  <select id="correct">
+    <option value="">Chọn đáp án đúng</option>
+    <option value="0">Đáp án 1</option>
+    <option value="1">Đáp án 2</option>
+    <option value="2">Đáp án 3</option>
+    <option value="3">Đáp án 4</option>
+  </select>
+  <button onclick="addQuestion()">Thêm câu hỏi</button>
+  <button onclick="resetQuestions()">🗑️ Xóa tất cả câu hỏi</button>
+  <p id="qCount"></p>
+</section>
+
+<!-- Quiz -->
+<section id="quiz">
+  <div id="quizBox">
+    <button onclick="startQuiz()">BẮT ĐẦU</button>
+    <h2 id="quizQuestion"></h2>
+    <img id="quizImage" style="max-width:400px; display:block; margin:10px auto;">
+    <div id="quizOptions"></div>
+    <h2 id="quizResult"></h2>
+    <button onclick="nextQuestion()">➡️ Câu tiếp</button>
+  </div>
+</section>
+
+<video id="inputVideo" autoplay playsinline></video>
+
+<script src="main.js"></script>
+</body>
+</html>
